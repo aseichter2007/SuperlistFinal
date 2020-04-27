@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Superlist", "Superlist\Superlist.csproj", "{63ECD853-516B-4125-A634-437A01BB59D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperlistTest", "SuperlistTest\SuperlistTest.csproj", "{4C20633B-FC14-4EDF-BFC1-F7E1AF33B2C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63ECD853-516B-4125-A634-437A01BB59D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63ECD853-516B-4125-A634-437A01BB59D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63ECD853-516B-4125-A634-437A01BB59D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63ECD853-516B-4125-A634-437A01BB59D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C20633B-FC14-4EDF-BFC1-F7E1AF33B2C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C20633B-FC14-4EDF-BFC1-F7E1AF33B2C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C20633B-FC14-4EDF-BFC1-F7E1AF33B2C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C20633B-FC14-4EDF-BFC1-F7E1AF33B2C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C3F4D5E-75FF-4125-BC53-CAF31FDEFDC7}
+	EndGlobalSection
+EndGlobal
