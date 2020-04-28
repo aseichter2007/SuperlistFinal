@@ -240,5 +240,29 @@ namespace SuperlistTest
                 Assert.AreEqual(superresult[i], expected[i]);
             }
         }
+        [TestMethod]
+        public void SuperSortUp()
+        {
+            SuperList<int> superlist = new SuperList<int>() { 9, 1, 8, 2, 7, 3, 6, 4, 5 };
+            superlist.SortUP();
+            for (int i = 0; i < superlist.Count; i++)
+            {
+                int num = i + 1;
+                Assert.AreEqual(num, superlist[i]);
+            }
+               
+        }
+        [TestMethod]
+        public void SuperSortDown()
+        {
+            SuperList<int> superlist = new SuperList<int>() { 9, 1, 8, 2, 7, 3, 6, 4, 5 };
+            superlist.SortDown();
+            for (int i = superlist.Count; i > 0; i--)
+            {
+                int num = i;
+                Assert.AreEqual(num, superlist[i - 1]);
+            }
+        }
+
     }
 }

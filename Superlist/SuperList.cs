@@ -77,14 +77,14 @@ namespace Superlist
 	        }
             return work;
         }
-        public static SuperList<T> operator -(SuperList<T> list1, SuperList<T> list2)
+        public static SuperList<T> operator -(SuperList<T> list, SuperList<T> list2subtract)
         {
             SuperList<T> work = new SuperList<T>();
-            foreach (var item in list1)
+            foreach (var item in list)
             {
                 work.Add(item);
             }
-            foreach (var item in list2)
+            foreach (var item in list2subtract)
             {
                 work.Remove(item);
             }

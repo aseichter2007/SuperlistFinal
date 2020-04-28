@@ -10,9 +10,7 @@ namespace Superlist
     {
         static void Main(string[] args)
         {
-            SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
-            SuperList<char> superList2 = new SuperList<char>() { 'c', 'a', 'b', };
-            SuperList<char> result = superList - superList2;
+            ReadmeWriter.WriteReadme();
 
             Console.ReadLine();
         }
