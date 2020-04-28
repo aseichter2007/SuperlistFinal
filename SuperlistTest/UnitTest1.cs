@@ -156,5 +156,50 @@ namespace SuperlistTest
             int test = superList.Contains('c');
             Assert.AreEqual(test, 2);
         }
+        [TestMethod]
+        public void MinusOperatorTest1()
+        {
+            SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
+            SuperList<char> superList2 = new SuperList<char>() {'d', 'e' };
+            SuperList<char> result = superList - superList2;
+            SuperList<char> expected = new SuperList<char>() { 'd', 'e' };
+            Assert.AreEqual(result[1], expected[1]);
+        }
+        [TestMethod]
+        public void MinusEqualsTest()
+        {
+            SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
+            SuperList<char> superList2 = new SuperList<char>() { 'c', 'a', 'b' };
+            superList -= superList2;
+            SuperList<char> epected = new SuperList<char>() {'d', 'e' };
+            Assert.AreEqual(superList[0], epected[0]);
+        }
+        [TestMethod]
+        public void AddOperatorTest1()
+        {
+            SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
+            SuperList<char> superList2 = new SuperList<char>() { 'c', 'a', 'b', 'd', 'e' };
+            SuperList<char> result = superList + superList2;
+            SuperList<char> epected = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e', 'c', 'a', 'b', 'd', 'e' };
+            Assert.AreEqual(result[1], epected[1]);
+        }
+        [TestMethod]
+        public void AddOperatorTest2()
+        {
+            SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
+            SuperList<char> superList2 = new SuperList<char>() { 'c', 'a', 'b', 'd', 'e' };
+            SuperList<char> result = superList + superList2;
+            SuperList<char> epected = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e', 'c', 'a', 'b', 'd', 'e' };
+            Assert.AreEqual(result[8], epected[8]);
+        }
+        [TestMethod]
+        public void AddEqualsTest()
+        {
+            SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
+            SuperList<char> superList2 = new SuperList<char>() { 'c', 'a', 'b', 'd', 'e' };
+            superList += superList2;
+            SuperList<char> epected = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e', 'c', 'a', 'b', 'd', 'e' };
+            Assert.AreEqual(superList[6], epected[6]);
+        }
     }
 }

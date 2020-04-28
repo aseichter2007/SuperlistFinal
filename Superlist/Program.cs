@@ -10,12 +10,9 @@ namespace Superlist
     {
         static void Main(string[] args)
         {
-            SuperList<int> superlist = new SuperList<int>() { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-
-            foreach (int item in superlist)
-            {
-                Console.WriteLine(item);
-            }
+            SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
+            SuperList<char> superList2 = new SuperList<char>() { 'c', 'a', 'b', };
+            SuperList<char> result = superList - superList2;
 
             Console.ReadLine();
         }

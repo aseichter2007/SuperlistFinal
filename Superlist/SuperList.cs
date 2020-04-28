@@ -22,12 +22,12 @@ namespace Superlist
             {
                 if (i < count)
                 {
-                   return array[i];
+                    return array[i];
                 }
                 else
                 {
                     throw new Exception("index outside of list");
-                }                
+                }
             }
             set
             {
@@ -62,8 +62,35 @@ namespace Superlist
             for (int i = 0; i < count; i++)
             {
                 yield return array[i];
-            }            
+            }
         }
+        public static SuperList<T> operator +(SuperList<T> list1, SuperList<T> list2)
+        {
+            SuperList<T> work = new SuperList<T>();
+            foreach (var item in list1)
+            {
+                work.Add(item);
+            }
+            foreach (var item in list2)
+	        {
+                work.Add(item);
+	        }
+            return work;
+        }
+        public static SuperList<T> operator -(SuperList<T> list1, SuperList<T> list2)
+        {
+            SuperList<T> work = new SuperList<T>();
+            foreach (var item in list1)
+            {
+                work.Add(item);
+            }
+            foreach (var item in list2)
+            {
+                work.Remove(item);
+            }
+            return work;
+        }
+
         public void Add(T add)
         {
             bool fit = FitTest(count);
@@ -93,11 +120,11 @@ namespace Superlist
         private void ExtendArray()
         {
             T[] work = new T[capacity*2];
-            work = ArrayAddCopy(array, work);
+            work = ArrayCopy(array, work);
             array = work;
             capacity = capacity * 2;
         }
-        private T[] ArrayAddCopy(T[] copy ,T[] paste)
+        private T[] ArrayCopy(T[] copy ,T[] paste)
         {
             T[] output = paste;
             for (int i = 0; i < count; i++)
@@ -160,6 +187,7 @@ namespace Superlist
         }
         public override string ToString()
         {
+            //you can use Object.ToString() to assist you
             string output="";
             return output;
         }
