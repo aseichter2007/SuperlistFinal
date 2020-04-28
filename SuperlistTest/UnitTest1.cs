@@ -160,7 +160,7 @@ namespace SuperlistTest
         public void MinusOperatorTest1()
         {
             SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e' };
-            SuperList<char> superList2 = new SuperList<char>() {'d', 'e' };
+            SuperList<char> superList2 = new SuperList<char>() { 'c', 'a', 'b' };
             SuperList<char> result = superList - superList2;
             SuperList<char> expected = new SuperList<char>() { 'd', 'e' };
             Assert.AreEqual(result[1], expected[1]);
@@ -200,6 +200,45 @@ namespace SuperlistTest
             superList += superList2;
             SuperList<char> epected = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e', 'c', 'a', 'b', 'd', 'e' };
             Assert.AreEqual(superList[6], epected[6]);
+        }
+        [TestMethod]
+        public void SuperListStringtest1()
+        {
+            //i have to figure out how to detect types if I am going to be able to make the numbers format how I like.
+            SuperList<int> superlist = new SuperList<int>() { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+            string result = superlist.ToString();
+            string expected = "10, 9, 8, 7, 6, 5, 4, 3, 2, 1";
+            Assert.AreEqual(expected, result);
+
+        }
+        [TestMethod]
+        public void SuperListStringtest2()
+        {
+            SuperList<char> superlist = new SuperList<char>() { 'i', 't', 's', 'w', 'o', 'r', 'k', 'i', 'n', 'g' };
+            string result = superlist.ToString();
+            string expected = "itsworking";
+            Assert.AreEqual(result, expected);
+
+        }
+        [TestMethod]
+        public void SuperListStringtest3()
+        {
+            SuperList<string> superlist = new SuperList<string>() { "it's ", "definitely ", "working!" };
+            string result = superlist.ToString();
+            string expected = "it's definitely working!";
+            Assert.AreEqual(result, expected);
+        }
+        [TestMethod]
+        public void SuperZiptest()
+        {
+            SuperList<int> superlist = new SuperList<int>() { 1, 3, 5 };
+            SuperList<int> superadd = new SuperList<int>() { 2, 4, 6 };
+            SuperList<int> superresult = superlist.Zip(superlist, superadd);
+            SuperList<int> expected = new SuperList<int>() { 1, 2, 3, 4, 5, 6 };
+            for (int i = 0; i < superresult.Count; i++)
+            {
+                Assert.AreEqual(superresult[i], expected[i]);
+            }
         }
     }
 }

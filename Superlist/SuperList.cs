@@ -180,19 +180,56 @@ namespace Superlist
             {
                 RemoveAt(index);
                 index = Contains(remove);
-            }
-            
-
-            
+            }           
         }
         public override string ToString()
         {
             //you can use Object.ToString() to assist you
             string output="";
+            StringBuilder stringBuilder = new StringBuilder();
+            Type type= array[0].GetType();
+            for (int i = 0; i < count; i++)
+            {
+                if (type.Equals(typeof(int)))
+                {
+                    stringBuilder.Append(array[i].ToString());
+                    if (i < count - 1) 
+                    {
+                        stringBuilder.Append(", ");
+                    }
+                }
+                else
+                {
+                    stringBuilder.Append(array[i].ToString());
+                }
+           }
+            output = stringBuilder.ToString();
             return output;
         }
-        public void Zip(SuperList<T> listOne, SuperList<T> listTwo)
+        public SuperList<T> Zip(SuperList<T> odd, SuperList<T> even)
         {
+            SuperList<T> work = new SuperList<T>();
+            int length = 0;
+            if (odd.count>even.count)
+            {
+                length = odd.count;
+            }
+            else
+            {
+                length = even.count;
+            }
+            for (int i = 0; i < length; i++)
+            {
+                if (i<odd.count)
+                {
+                    work.Add(odd[i]);
+                }
+                if (i<even.count)
+                {
+                    work.Add(even[i]);
+                }
+            }
+            return work;
 
         }
         public void SortUP()
