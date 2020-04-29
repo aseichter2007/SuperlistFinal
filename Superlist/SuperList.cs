@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Superlist 
 {
-    public class SuperList<T> : IEnumerable<T>, IComparable<T> where T : IComparable<T>
+    public class SuperList<T> : IEnumerable where T : IComparable<T>
     {
         private T[] array;
         private int count;
@@ -21,7 +21,7 @@ namespace Superlist
         {
             get
             {
-                if (i < count)
+                if (i>0&&i < count)
                 {
                     return array[i];
                 }
@@ -32,7 +32,7 @@ namespace Superlist
             }
             set
             {
-                if (i < count)
+                if (i>0&&i < count)
                 {
                     array[i] = value;
                 }
@@ -58,27 +58,28 @@ namespace Superlist
             count = 0;
             capacity = 3;
         }
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < count; i++)
             {
                 yield return array[i];
             }
         }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable<T>)array).GetEnumerator();
-        }
+        //aparently the SuperList itself is not generic, but can contain generic items. Gottem.
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return ((IEnumerable<T>)array).GetEnumerator();
+        //}
 
 
         public static SuperList<T> operator +(SuperList<T> list1, SuperList<T> list2)
         {
             SuperList<T> work = new SuperList<T>();
-            foreach (var item in list1)
+            foreach (T item in list1)
             {
                 work.Add(item);
             }
-            foreach (var item in list2)
+            foreach (T item in list2)
 	        {
                 work.Add(item);
 	        }
@@ -87,11 +88,11 @@ namespace Superlist
         public static SuperList<T> operator -(SuperList<T> list, SuperList<T> list2subtract)
         {
             SuperList<T> work = new SuperList<T>();
-            foreach (var item in list)
+            foreach (T item in list)
             {
                 work.Add(item);
             }
-            foreach (var item in list2subtract)
+            foreach (T item in list2subtract)
             {
                 work.Remove(item);
             }
@@ -315,9 +316,6 @@ namespace Superlist
 
         }
 
-        public int CompareTo(T other)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
