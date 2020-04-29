@@ -10,7 +10,11 @@ namespace Superlist
     {
         static void Main(string[] args)
         {
-            ReadmeWriter.WriteReadme();
+            //as a developer, write the documentation to desctribe the minus operator overload.
+            // ReadmeWriter.WriteReadme();
+            SuperList<int> superlist = new SuperList<int>() { 9, 1, 8,2, 2, 7, 3, 6, 4, 5 };
+            superlist.SortDown();
+
 
             Console.ReadLine();
         }

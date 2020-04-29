@@ -253,14 +253,73 @@ namespace SuperlistTest
                
         }
         [TestMethod]
+        public void SuperSortUpTest2()
+        {
+            SuperList<int> superlist = new SuperList<int>() { 9, 1, 2, 2, 7, 3, 2, 2, 4, 5 };
+            superlist.SortUP();
+            SuperList<int> superExpected = new SuperList<int>() { 1, 2, 2, 2, 2, 3, 4, 5, 7, 9 };
+            superExpected.CleanArray();
+            for (int i = 0; i < superlist.Count; i++)
+            {
+                Assert.AreEqual(superlist[i], superExpected[i]);
+
+            }
+        }
+        [TestMethod]
         public void SuperSortDown()
         {
             SuperList<int> superlist = new SuperList<int>() { 9, 1, 8, 2, 7, 3, 6, 4, 5 };
             superlist.SortDown();
+            int counter = 0;
             for (int i = superlist.Count; i > 0; i--)
+            {                
+                Assert.AreEqual(i, superlist[counter]);
+                counter++;
+            }
+        }
+
+        [TestMethod]
+        public void SuperAlphabetical()
+        {
+            SuperList<char> superlist = new SuperList<char>() { 'e', 'i', 'a', 'm', 'l' };
+            superlist.SortUP();
+            SuperList<char> superExpected = new SuperList<char>() { 'a', 'e', 'i', 'l', 'm' };
+            for (int i = 0; i < superlist.Count; i++)
             {
-                int num = i;
-                Assert.AreEqual(num, superlist[i - 1]);
+                Assert.AreEqual(superlist[i], superExpected[i]);
+
+            }
+        }
+        [TestMethod]
+        public void SuperAlphabeticalStrings()
+        {
+            SuperList<string> superlist = new SuperList<string>() { "amanda", "aardvark", "kazam", "blueberry", "apple", "sorting is getting old" };
+            superlist.SortUP();
+            SuperList<string> superExpected = new SuperList<string>() { "aardvark", "amanda", "apple", "blueberry", "kazam", "sorting is getting old" };
+            for (int i = 0; i < superlist.Count; i++)
+            {
+                Assert.AreEqual(superlist[i], superExpected[i]);
+
+            }
+        }
+        [TestMethod]
+        public void BigSort()
+        {
+            int num = 0;
+            Random random = new Random();
+            SuperList<int> superlist = new SuperList<int>();
+            for (int i = 0; i < 1000; i++)
+            {
+                num = random.Next(1000);
+                superlist.Add(num);
+            }
+            superlist.SortUP();
+            num = -1;
+            for (int i = 0; i < superlist.Count; i++)
+            {
+                Assert.IsTrue(num <= superlist[i]);
+                num = superlist[i];
+
             }
         }
 

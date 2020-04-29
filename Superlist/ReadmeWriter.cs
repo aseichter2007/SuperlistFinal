@@ -16,12 +16,14 @@ namespace Superlist
             fileStream.WriteLine("");
             fileStream.WriteLine("Superlist<T> Minus Operator Override metheod");
             fileStream.WriteLine("      -     -   -   -  -   -    -     -");
-            fileStream.WriteLine("Overrides the - operator to work with SuperList<T>");
-            fileStream.WriteLine("_____________________________________________________________________________________");
-            fileStream.WriteLine("public static SuperList<T> operator -(SuperList<T> list, SuperList<T> list2subtract)");
+            fileStream.WriteLine("Overrides the - operator to work with SuperList<T> objects");
+            fileStream.WriteLine("_C#__________________________________________________________________________________");
+            fileStream.WriteLine("public static SuperList<T> operator -(SuperList<T> list, SuperList<T> list2subtract);");
             fileStream.WriteLine("_____________________________________________________________________________________");
             fileStream.WriteLine("");
-            fileStream.WriteLine("Paraameters:");
+            fileStream.WriteLine("Paraameters: the objects before and after the - (minus) operator.");
+            fileStream.WriteLine("-----------");
+            fileStream.WriteLine("list - list2subtract");
             fileStream.WriteLine("-----------");
             fileStream.WriteLine("'list' is the list to remove objects from");
             fileStream.WriteLine("'list2subtract' countains the objects to remove from 'list'");
@@ -31,7 +33,7 @@ namespace Superlist
             fileStream.WriteLine("");
             fileStream.WriteLine("Returns:");
             fileStream.WriteLine("-------");
-            fileStream.WriteLine("returns a SuperList<T> with the objects remaining in 'list' after removal of items in 'list2subtract");
+            fileStream.WriteLine("return type SuperList<T> with the objects remaining in 'list' after removal of items in 'list2subtract");
             fileStream.WriteLine("_____________________________________________________________________________________");
             fileStream.WriteLine("");
             fileStream.WriteLine("");
@@ -49,11 +51,12 @@ namespace Superlist
             fileStream.WriteLine("Examples:");
             fileStream.WriteLine("------");
             fileStream.WriteLine("The folowing demonstrates how to remove objects from a Superlist<T> using the overloaded operator");
-            fileStream.WriteLine("__________________________________________________________________________");
+            fileStream.WriteLine("_______________________________________________________________________________________");
             fileStream.WriteLine("");
             fileStream.WriteLine("//declare two Superlist<T> objects with contents");
             fileStream.WriteLine("SuperList<char> superList = new SuperList<char>() { 'a', 'b', 'c', 'd', 'e', 'a'};");
             fileStream.WriteLine("SuperList<char> supersubtract = new SuperList<char>() { 'c', 'a', 'b' };");
+            fileStream.WriteLine("");
             fileStream.WriteLine("");
             fileStream.WriteLine("//subtract and capture the result");
             fileStream.WriteLine("SuperList<char> result = superlist - supersubtract;     //result = { 'd', 'e', 'a' } ");
@@ -61,8 +64,14 @@ namespace Superlist
             fileStream.WriteLine("//or subtract directly");
             fileStream.WriteLine("superlist -= supersubtract;     //superlist = { 'd', 'e', 'a' } ");
             fileStream.WriteLine("");
+            fileStream.WriteLine("_______________________________________________________________________________________");
             fileStream.WriteLine("");
             fileStream.WriteLine("");
+            fileStream.WriteLine("Remarks:");
+            fileStream.WriteLine("I'm pretty sure this override will mess up bad with the right object type,");
+            fileStream.WriteLine("but I dont know enough about the god object to be sure.");
+            fileStream.Close();
+
 
 
 

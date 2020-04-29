@@ -5,13 +5,14 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Superlist 
 {
-    public class SuperList<T> : IEnumerable<T>
+    public class SuperList<T> : IEnumerable<T>, IComparable<T> where T : IComparable<T>
     {
         private T[] array;
         private int count;
@@ -64,6 +65,12 @@ namespace Superlist
                 yield return array[i];
             }
         }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<T>)array).GetEnumerator();
+        }
+
+
         public static SuperList<T> operator +(SuperList<T> list1, SuperList<T> list2)
         {
             SuperList<T> work = new SuperList<T>();
@@ -234,16 +241,83 @@ namespace Superlist
         }
         public void SortUP()
         {
+            T[] work = new T[count];
+            int low = 0;
+            int dupe = 0;
+            SuperList<T> container = new SuperList<T>();
+            T item;
+            for (int i = 0; i < count; i++)
+            {
+                low = 0;
+                dupe = 0;
+                item = array[i];
+
+                if (container.Contains(item)<0)
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        if (j != i && item.CompareTo(array[j]) > 0)
+                        {
+                            low++;
+                        }
+                        else if (item.Equals(array[j]))
+                        {
+                            dupe++;
+                        }
+                    }
+                }
+                container.Add(item);
+                for (int k = 0; k < dupe; k++)
+                {
+                    work[k + low] = item;
+                }
+            }
+            array = work;
 
         }
         public void SortDown()
         {
+            T[] work = new T[count];
+            int low = 0;
+            int dupe = 0;
+            SuperList<T> container = new SuperList<T>();
+            T item;
+            for (int i = 0; i < count; i++)
+            {
+                low = 0;
+                dupe = 0;
+                item = array[i];
+
+                if (container.Contains(item) < 0)
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        if (j != i && item.CompareTo(array[j]) > 0)
+                        {
+                            low++;
+                        }
+                        else if (item.Equals(array[j]))
+                        {
+                            dupe++;
+                           container.Add(item);
+
+                        }
+                    }
+                }
+                low = count - low-dupe;
+                //inverter for down
+                for (int k = 0; k < dupe; k++)
+                {
+                    work[k + low] = item;
+                }
+            }
+            array = work;
 
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public int CompareTo(T other)
         {
-            return ((IEnumerable<T>)array).GetEnumerator();
+            throw new NotImplementedException();
         }
     }
 }
