@@ -308,7 +308,7 @@ namespace SuperlistTest
             int num = 0;
             Random random = new Random();
             SuperList<int> superlist = new SuperList<int>();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 num = random.Next(1000);
                 superlist.Add(num);
