@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Superlist 
 {
@@ -21,7 +22,7 @@ namespace Superlist
         {
             get
             {
-                if (i>0&&i < count)
+                if (i>-1&&i < count)
                 {
                     return array[i];
                 }
@@ -32,7 +33,7 @@ namespace Superlist
             }
             set
             {
-                if (i>0&&i < count)
+                if (i>-1&&i < count)
                 {
                     array[i] = value;
                 }
@@ -49,6 +50,12 @@ namespace Superlist
         public int Capacity
         {
             get => capacity;
+            set {
+                    if (Capacity<capacity)
+                    {
+                        ExtendCapacity(Capacity);
+                    }
+            }
         }
 
 
@@ -132,6 +139,13 @@ namespace Superlist
             array = work;
             capacity = capacity * 2;
         }
+        private void ExtendCapacity(int capacity)
+        {
+            T[] work = new T[capacity];
+            work = ArrayCopy(array, work);
+            array = work;
+            this.capacity = capacity;
+        }
         private T[] ArrayCopy(T[] copy ,T[] paste)
         {
             T[] output = paste;
@@ -154,13 +168,16 @@ namespace Superlist
             }
             return index;
         }
-        public void Remove(T remove)
+        public bool Remove(T remove)
         {
+            bool output = false;
             int index = Contains(remove);
-            if (index >=0)
+            if (index >=0&&index<count)
             {
                 RemoveAt(index);
+                output = true;
             }
+            return output;
         }
         public void RemoveAt(int index)
         {
