@@ -134,10 +134,9 @@ namespace Superlist
         }
         private void ExtendArray()
         {
-            T[] work = new T[capacity*2];
+            T[] work = new T[capacity*=2];
             work = ArrayCopy(array, work);
             array = work;
-            capacity = capacity * 2;
         }
         private void ExtendCapacity(int capacity)
         {
