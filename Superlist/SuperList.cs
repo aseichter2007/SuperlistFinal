@@ -58,7 +58,7 @@ namespace Superlist
         {
             get => capacity;
             set {
-                    if (Capacity<capacity)
+                    if (Capacity<=count)
                     {
                         ExtendCapacity(Capacity);
                     }
