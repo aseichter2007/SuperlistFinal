@@ -46,6 +46,13 @@ namespace Superlist
         public int Count
         {
             get => count;
+            set
+            {
+                if (Count<=0&&Count<capacity)
+                {
+                    count = Count;
+                }
+            }
         }
         public int Capacity
         {
